@@ -1,15 +1,15 @@
 import "./App.css";
-import SearchEngine from "./SearchEngine";
+import Weather from "./Weather";
 
 export default function App() {
   return (
     <div className="App">
       <div className="container">
-        <h1>Weather App</h1>
-        <SearchEngine />
-        <hr />
-        Check out the code
-        <a href="https://github.com/ParisaFaridi/react-weather-app">here</a>
+        <Weather />
+        <span className="text-center d-block">
+          Check out the code
+          <a href="https://github.com/ParisaFaridi/react-weather-app"> here</a>
+        </span>
       </div>
     </div>
   );
