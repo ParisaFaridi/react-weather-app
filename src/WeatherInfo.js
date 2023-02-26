@@ -1,5 +1,6 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
+import WeatherTemp from "./WeatherTemp";
 
 function WeatherInfo(props) {
   let weatherData = props.data;
@@ -8,15 +9,7 @@ function WeatherInfo(props) {
       <section className="row">
         <div className="col-4 text-center mt-3">
           <img src={weatherData.icon_url} alt={weatherData.icon} />
-          <span className="temp">{Math.round(weatherData.temp)}</span>
-          <span className="unit">°C</span>
-          <div>
-            <a href="">°C</a>
-            <span> | </span>
-            <a href="" className="de-active">
-              °F
-            </a>
-          </div>
+          <WeatherTemp temp={weatherData.temp} />
         </div>
         <div className="col-4 mt-4 mb-4">
           <h1>{weatherData.city}</h1>
