@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ForecastWeatherDay from "./ForecastWeatherDay";
 
@@ -7,6 +7,9 @@ function WeatherForecast(props) {
   let baseURL = "https://api.shecodes.io/weather/v1/";
   let [loaded, setLoaded] = useState(false);
   let [forecast, setForecast] = useState({});
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.city]);
   function sendRequest() {
     axios
       .get(`${baseURL}forecast?query=${props.city}&key=${apiKey}`)
