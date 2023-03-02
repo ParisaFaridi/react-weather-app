@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import "./Weather.css";
 import axios from "axios";
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 
 export default function Weather(props) {
   let [city, setCity] = useState(props.city);
   let [weatherData, setWeatherData] = useState({ loaded: false });
   let apiKey = "8da4ecft94o07a66ae007734f06f8abe";
-  let baseURL = "https://api.shecodes.io/weather/v1/current?";
+  let baseURL = "https://api.shecodes.io/weather/v1/";
   function request() {
     axios
-      .get(`${baseURL}query=${city}&key=${apiKey}`)
+      .get(`${baseURL}current?query=${city}&key=${apiKey}`)
       .then(function (response) {
-        console.log(response);
         setWeatherData({
           loaded: true,
           desc: response.data.condition.description,
@@ -51,7 +51,8 @@ export default function Weather(props) {
             </div>
           </div>
         </form>
-        <WeatherInfo data={weatherData}/>
+        <WeatherInfo data={weatherData} />
+        <WeatherForecast city={weatherData.city} />
       </div>
     );
   } else {
